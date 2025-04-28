@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block style %}
+<script src="../static/js/sponsor.js" defer></script>
+<link rel="stylesheet" href="../static/css/sponsor.css">
+
+
+{% endblock %}
+{% block content %}
+<section class="container">
+    <div class="page-title">
+        <h1 class="h-sponsor">Sponsor PyCon Togo 2025</h1>
+        <p>Support our inaugural Python conference and help build the tech community in Togo</p>
+    </div>
+
+    <div class="free-event-box">
+        <h3 class="h-sponsor">First Edition - Free for All Attendees!</h3>
+        <p>PyCon Togo 2025 will be our first edition and completely free for all participants. Your sponsorship directly
+            helps us create an accessible event that builds Togo's tech community from the ground up.</p>
+    </div>
+
+    <div class="info-section">
+        <h2 class="h-sponsor">Why Sponsor PyCon Togo?</h2>
+        <p>PyCon Togo is the first Python conference in Togo, aiming to bring together developers, students, and tech
+            enthusiasts from across the region. As a new community, we need your support to make this event successful
+            and establish a foundation for future growth.</p>
+
+        <div class="info-box">
+            <h3 class="h-sponsor">Benefits for Sponsors</h3>
+            <ul class="benefit-list">
+                <li>Be recognized as an early supporter of Togo's Python community</li>
+                <li>Connect with tech talent in an emerging market</li>
+                <li>Demonstrate your commitment to tech education in West Africa</li>
+                <li>Gain visibility for your brand among developers and students</li>
+                <li>Help shape the future of the tech ecosystem in Togo</li>
+                <li>Network with other forward-thinking companies and organizations</li>
+            </ul>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Expected Attendees</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Technical Sessions</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">West African Countries</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">60%</div>
+                <div class="stat-label">Students & Young Developers</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2 class="h-sponsor" id="sponsorship-packages">Affordable Sponsorship Packages</h2>
+        <p>As a new community initiative, we've created sponsorship packages that are accessible while still offering
+            valuable benefits.</p>
+
+        <div class="sponsor-grid">
+            <!-- Headline Sponsor - New premium option -->
+            <div class="sponsor-card headline-card">
+                <div class="sponsor-header {{ headline['title']}}-header">
+                    <h3 class="h-sponsor"> {{ headline["name"] }}</h3>
+                    <p>{{ headline["amount_cfa"] }} FCFA</p>
+                    <p><small>(~${{ headline["amount_usd"] }} USD)</small></p>
+                    <div class="availability-tag">EXCLUSIVE - {{ headline["available"] }} of {{ headline["availability"]
+                        }} Available</div>
+                </div>
+                <div class="sponsor-body">
+                    <ul class="sponsor-benefits">
+                        {% for advantage in headline["advantages"] %}
+                        <li>{{ advantage }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="sponsor-footer">
+                    <a href="{{ url_for('contact')}}" class="btn headline-btn">Become the {{ headline["name"] }}</a>
+                </div>
+            </div>
+
+            {% for sponsor_tier in sponsor_tiers %}
+            {% if sponsor_tier['title'] != "headline" and sponsor_tier['title'] != "inkind" %}
+
+            <div class="sponsor-card">
+                <div class="sponsor-header {{ sponsor_tier['title'] }}-header">
+                    <h3 class="h-sponsor">{{ sponsor_tier["name"] }}</h3>
+                    <p>{{ sponsor_tier["amount_cfa"] }} XOF</p>
+                    <p><small>(~${{ sponsor_tier["amount_usd"] }} USD)</small></p>
+                    {% if sponsor_tier["availability"] > 10 %}
+                    <div class="availability-tag">Unlimited </div>
+                    {% else %}
+                    <div class="availability-tag">{{ sponsor_tier["available"] }} of {{ sponsor_tier["availability"] }}
+                        Available</div>
+                    {% endif %}
+                </div>
+                <div class="sponsor-body">
+                    <ul class="sponsor-benefits">
+                        {% for advantage in sponsor_tier["advantages"] %}
+                        <li>{{ advantage }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="sponsor-footer">
+                    <a href="{{ url_for('contact')}}" class="btn">Become a {{ sponsor_tier["name"] }}</a>
+                </div>
+
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <h2 class="h-sponsor">In-Kind Sponsorship Welcome!</h2>
+        <p>We also welcome in-kind contributions such as venue space, equipment loans, refreshments, or printing
+            services. Every contribution helps make our first event successful!</p>
+        <a href="{{ url_for('contact')}}" class="btn">Contact Us</a>
+    </div>
+
+
+
+</section>
+{% endblock %}

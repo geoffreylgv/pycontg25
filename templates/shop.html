@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-content">
+    <div class="container">
+        <h2 class="section-title mb-20">Conference Merchandise</h2>
+
+        <div class="products-grid">
+            <!-- T-Shirt Product -->
+             {% for swag in swags %}
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../{{ swag.images[0] }}" alt="{{ swag.name }}">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">{{ swag.name }}</h3>
+                    <div class="product-price">{{ swag.price }} XOF (~{{ swag.priceDollar}} $)</div>
+                    <p class="product-description">{{ swag.description }}</p>
+                    <a href="{{ url_for('coming_soon')}}" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            {% endfor %}
+           
+        </div>
+
+        <div class="text-center mt-20">
+            <p class="mb-20">All proceeds help fund PyCon Togo and support Python education in West Africa.</p>
+            <a href="{{ url_for('coming_soon')}}" class="btn btn-outline">View Cart</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

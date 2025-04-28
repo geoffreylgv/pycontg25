@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Register for PyCon Togo 2025</h1>
+        <p class="page-description">Join us for the first-ever Python Conference in Togo and be part of this
+            historic event!</p>
+    </div>
+</section>
+
+<section class="page-content">
+    <div class="container">
+        <form class="registration-form" action="/register" method="POST">
+            <div class="form-group">
+                <label for="fullName" class="form-label">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone Number (WhatsApp)</label>
+                <input type="tel" id="phone" name="phone" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="organization" class="form-label">Organization / Company</label>
+                <input type="text" id="organization" name="organization" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="country" class="form-label">Country *</label>
+                <select id="country" name="country" class="form-control" required>
+                    <option value="">Select your country</option>
+                    <option value="togo">Togo</option>
+                    <option value="ghana">Ghana</option>
+                    <option value="benin">Benin</option>
+                    <option value="nigeria">Nigeria</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country" class="form-label">T-Shirt Size *</label>
+                <select id="country" name="tshirtsize" class="form-control" required>
+                    <option value="">Select your Size</option>
+                    <option value="s">Small</option>
+                    <option value="m">Medium</option>
+                    <option value="l">Large</option>
+                    <option value="xl">X-Large</option>
+                    <option value="xxl">XX-Large</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dietaryRestrictions" class="form-label">Dietary Restrictions</label>
+                <textarea id="dietaryRestrictions" name="dietaryrestrictions" class="form-control" rows="3"
+                    placeholder="Please let us know if you have any dietary restrictions or food allergies"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" id="codeOfConduct" name="codeofconduct" class="form-check-input" value=true
+                        required>
+                    <label for="codeOfConduct">I agree to the <a href="#" target="_blank">Code of Conduct</a>
+                        *</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input" value=true>
+                    <label for="newsletter">Subscribe to PyCon Togo newsletter</label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Register Now</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
