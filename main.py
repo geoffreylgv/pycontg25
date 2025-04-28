@@ -22,11 +22,9 @@ from validator import (
 
 app = Flask(__name__)
 
-# Configuration des dossiers statiques et templates
 app.static_folder = "static"
 app.template_folder = "templates"
 
-# Variables globales
 year = datetime.now().year
 event_date = datetime(2025, 8, 23, 7, 30, 0)
 event_date_str = event_date.strftime("%d %B %Y at %H:%M")

@@ -8,3 +8,4 @@ python-multipart==0.0.20
 python-dotenv==1.0.1
 flask==3.1.0
 flask_wtf==1.2.2
+gunicorn==23.0.0
