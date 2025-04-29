@@ -8,6 +8,9 @@ from models import (
     VolunteerInquiry,
     WaitlistInquiry,
     RegistrationInquiry,
+
+    
+
 )
 from datas import (
     get_swags,
@@ -479,6 +482,21 @@ def contact():
         sponsor_tiers=sponsor_tiers,
     )
 
+@app.route("/about")
+def about_us():
+    return render_template(
+        "about.html",
+        year=year,
+        sponsor_tiers=sponsor_tiers,
+    )
+
+@app.route("/code-of-conduct")
+def code_of_conduct():
+    return render_template(
+        "coc.html",
+        year=year,
+        sponsor_tiers=sponsor_tiers,
+    )
 
 @app.errorhandler(404)
 def page_not_found(e):
