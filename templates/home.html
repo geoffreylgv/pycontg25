@@ -46,7 +46,7 @@
 
             <div class="event-details">
                 <p class="event-location"> {{ event_date }}</p>
-                <a href="#program" class="view-schedule">
+                <a href="{{ url_for('schedule')}}" class="view-schedule">
                     View Full Schedule
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         viewBox="0 0 16 16">
@@ -101,7 +101,7 @@
         </div>
         <div class="hero-buttons">
             <a href="{{ url_for('sponsor')}}" class="btn btn-primary">Become a Sponsor</a>
-            <a href="../static/docs/Pycon_Togo_2025.pdf" class="btn btn-outline" download>Download our Prospectus</a>
+            <a href="https://drive.google.com/file/d/1YmFRr415CoTT4pnXHgEIMyt4qIBXg-PA/view" class="btn btn-outline" download>Download our Prospectus</a>
         </div>
 
     </div>

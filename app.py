@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime, timedelta
-import os
 from config import supabase
 from models import (
     Proposal,
@@ -28,6 +27,7 @@ app = Flask(__name__)
 app.static_folder = "static"
 app.template_folder = "templates"
 
+application = app
 year = datetime.now().year
 event_date = datetime(2025, 8, 23, 7, 30, 0)
 event_date_str = event_date.strftime("%d %B %Y at %H:%M")
@@ -65,6 +65,13 @@ def shop_swag():
 def register():
     if request.method == "GET":
         print(f"Opening in {opening_in_days} days")
+        return render_template(
+            "register.html",
+            year=year,
+            event_date=event_date_str,
+            registration_open=False,
+        )
+    else:
         if opening_in > timedelta(days=45):
             return render_template(
                 "registration.html",
@@ -73,13 +80,6 @@ def register():
                 registration_open=True,
                 opening_in_days=opening_in_days,
             )
-        return render_template(
-            "register.html",
-            year=year,
-            event_date=event_date_str,
-            registration_open=False,
-        )
-    else:  
         form_data = request.form
         data = RegistrationInquiry(
             fullName=form_data.get("fullName"),
@@ -150,7 +150,6 @@ def register():
             status="success",
         )
 
-
 @app.route("/coming-soon")
 def coming_soon():
     return render_template(
@@ -158,6 +157,16 @@ def coming_soon():
         year=year,
     )
 
+@app.route("/health-safety")
+def health_safety():
+    return render_template(
+        "health-safety.html",
+        year=year,
+    )
+
+@app.route("/schedule")
+def schedule():
+    return redirect(url_for("coming_soon"))
 
 @app.route("/volunteer", methods=["GET", "POST"])
 def volunteer():
