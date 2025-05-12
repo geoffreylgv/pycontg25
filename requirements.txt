@@ -2,9 +2,8 @@ pycountry==24.6.1
 supabase==0.7.1
 python-multipart==0.0.20
 python-dotenv==1.0.1
-# Flask and Werkzeug versions must be compatible
 flask==2.3.3
 flask_wtf==1.2.2
 gunicorn==23.0.0
 werkzeug==2.3.7
-pydantic==2.5.2
+pydantic>=1.9.1,<2.0.0
