@@ -68,6 +68,9 @@ class Proposal(BaseModel):
         title="Technical Needs",
         description="Technical needs for the talk (e.g., projector, microphone)",
     )
+    accepted: bool = Field(
+        False, title="Accepted", description="Indicates if the proposal is accepted"
+    )
    
     
 
@@ -89,6 +92,9 @@ class SponsorInquiry(BaseModel):
         ..., title="Sponsorship Level", description="Level of sponsorship"
     )
     message: str = Field(..., title="Message", description="Message from the sponsor")
+    paid: bool = Field(
+        False, title="Paid", description="Indicates if the sponsorship is paid"
+    )
 
 
 class VolunteerInquiry(BaseModel):
@@ -114,6 +120,9 @@ class VolunteerInquiry(BaseModel):
     )
     availability_after: bool = Field(
         False, title="Availability After", description="Availability after the event"
+    )
+    accepted: bool = Field(
+        False, title="Accepted", description="Indicates if the volunteer is accepted"
     )
 
     experience: str = Field(

@@ -17,6 +17,8 @@ from datas import (
     get_sponsortirtbytitle,
     get_something_email,
     insert_something,
+    get_everything,
+    get_everything_where,
 )
 from validator import (
     is_valid_email,
@@ -506,6 +508,10 @@ def code_of_conduct():
         year=year,
         sponsor_tiers=sponsor_tiers,
     )
+
+# api 
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):

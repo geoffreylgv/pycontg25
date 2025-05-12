@@ -1,30 +1,23 @@
-import smtplib
-import ssl
+from supabase import create_client, Client
+import os
+from dotenv import load_dotenv
 
-smtp_server = "pytogo.org"
-port = 465  # For starttls
-sender_email = "ibrahim@pytogo.org"
-password = "W@$$iou9827"
+load_dotenv()
+url = os.environ.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY")
+supabase: Client = create_client(url, key)
 
-# Create a secure SSL context
-context = ssl.create_default_context()
+sql_query = """
+    CREATE TABLE IF NOT EXISTS example_table (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255),
+        value INTEGER
+    );
+    """
 
-# Try to log in to server and send email
-server = smtplib.SMTP("pytogo.org", 465)
-try:
-    
-    server.ehlo() # Can be omitted
-    server.starttls(context=context) # Secure the connection
-    server.ehlo() # Can be omitted
-    server.login(sender_email, password)
-    # TODO: Send email
-    receiver_email = "wachioubouraima56@gmail.com"
-    message = """\
-    Subject: Hi there
-    This message is sent from Python."""
-    server.sendmail(sender_email, receiver_email, message)
-except Exception as e:
-    # Print any error messages to stdout
-    print(e)
-finally:
-    server.quit()
+data, error = supabase.rpc('sql', {'query': sql_query}).execute()
+
+if error:
+    print(f"Error creating table: {error}")
+else:
+    print("Table created successfully")

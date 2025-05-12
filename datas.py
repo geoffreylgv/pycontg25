@@ -196,7 +196,25 @@ def update_something(table, email, data):
         print(f"Failed to update data: {response.error}")
         return False
 
+def get_everything(table):
+    """
+    Get everything in a particular table
+    """
+    response = supabase.table(table).select("*").execute()
+    data = response.data
+    if len(data) == 0:
+        return {"message": "No entries found"}
+    return data
 
+def get_everything_where(table, field, value):
+    """
+    Get everything in a particular table where a specific field matches a value
+    """
+    response = supabase.table(table).select("*").eq(field, value).execute()
+    data = response.data
+    if len(data) == 0:
+        return {"message": "No entries found"}
+    return data
 
 if __name__ == "__main__":
     tiers = get_sponsorteirs()
