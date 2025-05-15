@@ -1,4 +1,9 @@
-import sys
+import typing
+
+
+if not hasattr(typing, "_ClassVar") and hasattr(typing, "ClassVar"):
+    typing._ClassVar = typing.ClassVar
+
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime, timedelta
 from config import supabase
@@ -25,11 +30,6 @@ from validator import (
     is_valid_email,
 )
 
-# This fixes the '_ClassVar' vs 'ClassVar' issue
-if not hasattr(sys.modules["typing"], "_ClassVar") and hasattr(
-    sys.modules["typing"], "ClassVar"
-):
-    sys.modules["typing"]._ClassVar = sys.modules["typing"].ClassVar
 
     
 app = Flask(__name__)
