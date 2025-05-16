@@ -14,7 +14,7 @@
     <div class="container">
         <form class="registration-form" action="/register" method="POST">
             <div class="form-group">
-                <label for="fullName" class="form-label">Full Name *</label>
+                <label for="fullName" class="form-label">Full Name / Nom Complet *</label>
                 <input type="text" id="fullName" name="fullName" class="form-control" required>
             </div>
 
@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <label for="phone" class="form-label">Phone Number (WhatsApp)</label>
+                <label for="phone" class="form-label">Phone Number / Noméro dre téléphone (WhatsApp)</label>
                 <input type="tel" id="phone" name="phone" class="form-control">
             </div>
 
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-                <label for="country" class="form-label">Country *</label>
+                <label for="country" class="form-label">Country / Pays *</label>
                 <select id="country" name="country" class="form-control" required>
                     <option value="">Select your country</option>
                     <option value="togo">Togo</option>
@@ -45,8 +45,16 @@
                 </select>
             </div>
             <div class="form-group">
+                <div class="checkbox-group">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="s-tshirt" name="needs" value=true>
+                        <label for="s-tshirt">Want to buy our t-shirt ?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="tshirt-size" style="display: none;">
                 <label for="country" class="form-label">T-Shirt Size *</label>
-                <select id="country" name="tshirtsize" class="form-control" required>
+                <select id="country" name="tshirtsize" class="form-control">
                     <option value="">Select your Size</option>
                     <option value="s">Small</option>
                     <option value="m">Medium</option>
@@ -83,4 +91,14 @@
         </form>
     </div>
 </section>
+<script>
+    document.getElementById('s-tshirt').addEventListener('change', function () {
+            const technicalDetails = document.getElementById('tshirt-size');
+            if (this.checked) {
+                technicalDetails.style.display = 'block';
+            } else {
+                technicalDetails.style.display = 'none';
+            }
+        });
+</script>
 {% endblock %}

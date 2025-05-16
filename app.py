@@ -336,12 +336,22 @@ def waitlist():
 
 @app.route("/proposal", methods=["GET", "POST"])
 def proposal():
+    cfp_opening_in_days = datetime(2025, 6, 23, 0, 0, 0)
     if request.method == "GET":
         return render_template(
             "speaker.html",
             year=year,
         )
-    else:  
+    else:
+        if cfp_opening_in_days > datetime.now():
+
+            return render_template(
+                "cfp.html",
+                year=year,
+                event_date=event_date_str,
+                registration_open=True,
+                opening_in_days=cfp_opening_in_days,
+            )
         form_data = request.form
         data = Proposal(
             format=form_data.get("format"),
@@ -355,6 +365,8 @@ def proposal():
             talk_outline=form_data.get("talk_outline"),
             bio=form_data.get("bio"),
             needs=bool(form_data.get("needs")),
+            talk_language=form_data.get("talk_language"),
+            track=form_data.get("track"),
             technical_needs=form_data.get("technical_needs"),
         )
 
