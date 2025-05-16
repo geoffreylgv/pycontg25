@@ -47,8 +47,8 @@
             </div>
 
             <div class="form-group">
-                <label for="v-city">Country/City</label>
-                <input type="text" id="v-city" name="country_city">
+                <label for="v-city " class="required-field">Country/City</label>
+                <input type="text" id="v-city" name="country_city" required>
             </div>
 
             <div class="form-group">
@@ -108,6 +108,19 @@
                         <input type="checkbox" id="v-photography" name="photography" value=true>
                         <label for="v-photography">Photography and Documentation</label>
                     </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="video_editor" name="video_editor" value=true>
+                        <label for="video_editor"> Video editor / social media video creation </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="graphic_designer" name="graphic_designer" value=true>
+                        <label for="graphic_designer">Graphic Design</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label for="v-other-text">Other ?</label>
+                        <span></span>
+                        <input type="text" id="v-other-text" name="other" placeholder="Please specify">
+                    </div>
                 </div>
             </div>
 
@@ -115,6 +128,14 @@
                 <label for="v-message">Message (motivation, previous experience...)</label>
                 <textarea id="v-message" name="motivation"></textarea>
             </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="v-terms" name="terms" value=true required>
+                <label for="v-terms" class="required-field">I agree to the <a href="{{ url_for('code_of_conduct')}}" target="_blank">Code of
+                        Conduct</a>
+                </label>
+            </div>
+
 
             <div class="text-center">
                 <button type="submit" class="btn">Register as a Volunteer</button>

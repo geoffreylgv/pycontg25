@@ -169,6 +169,14 @@
                     <textarea id="s-technical-details" name="technical_needs"></textarea>
                 </div>
 
+                <div class="checkbox-container">
+                    <input type="checkbox" id="v-terms" name="terms" value=true required>
+                    <label for="v-terms" class="required-field">I agree to the <a href="{{ url_for('code_of_conduct')}}"
+                            target="_blank">Code of
+                            Conduct</a>
+                    </label>
+                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn">Submit My Proposal</button>
                 </div>

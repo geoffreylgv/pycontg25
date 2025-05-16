@@ -6,7 +6,6 @@ if not hasattr(typing, "_ClassVar") and hasattr(typing, "ClassVar"):
 
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime, timedelta
-from config import supabase
 from models import (
     Proposal,
     SponsorInquiry,
@@ -202,6 +201,9 @@ def volunteer():
             technical=bool(form_data.get("technical")),
             logistic=bool(form_data.get("logistic")),
             social=bool(form_data.get("social")),
+            other=form_data.get("other"),
+            video_editor=bool(form_data.get("video_editor")),
+            graphic_designer=bool(form_data.get("graphic_designer")),
             photography=bool(form_data.get("photography")),
         )
 

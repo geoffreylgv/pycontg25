@@ -127,6 +127,15 @@ class VolunteerInquiry(BaseModel):
     availability_after: bool = Field(
         False, title="Availability After", description="Availability after the event"
     )
+    video_editor: bool = Field(
+        False, title="Video Editor", description="Indicates if the volunteer is a video editor"
+    )
+    graphic_designer: bool = Field(
+        False, title="Graphic Designer", description="Indicates if the volunteer is a graphic designer"
+    )
+    other: str = Field(
+        None, title="Other", description="Other skills or information from the volunteer"
+    )
     accepted: bool = Field(
         False, title="Accepted", description="Indicates if the volunteer is accepted"
     )

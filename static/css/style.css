@@ -404,6 +404,11 @@ header {
     margin-top: 30px;
 }
 
+.required-field::after {
+    content: " *";
+    color: #dc3545;
+}
+
 /* Call to action sections */
 .cta-section {
     background-color: var(--light-gray);
@@ -444,6 +449,7 @@ header {
     display: flex;
     align-items: center;
 }
+
 
 .cta-list svg {
     color: var(--primary-color);
