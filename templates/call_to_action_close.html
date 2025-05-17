@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block style %}
+<script src="../static/js/main.js" defer></script>
+<script src="../static/js/register.js" defer></script>
+<link rel="stylesheet" href="../static/css/coming-soon.css">
+
+{% endblock %}
+
+{% block content %}
+
+<main class="coming-soon">
+    <div class="countdown-container">
+
+        <h2 class="countdown-title">Call for {{ call_to_action }} is closed</h2>
+        <div  id="countdown">
+            <p>Thank you for your interest in volunteering for PyCon Togo 2025. We appreciate your enthusiasm and
+                support!</p>
+            <p>We are currently in the process of reviewing applications and will be in touch with selected candidates
+                soon.</p>
+            <p>In the meantime, feel free to explore our website for more information about the conference and stay
+                connected with us through our <a href="https://pytogo.org/discord" target="_blank">Discord server</a>, social media channels.</p>
+            
+
+            <div class="notification">
+                Thank you for your understanding, and we look forward to seeing you at PyCon Togo 2025!
+            </div>
+
+            <div class="cta-buttons">
+                <a href="{{ url_for('home')}}" class="btn">Back to home page</a>
+                <a href="https://pytogo.org/discord" class="secondary-btn" target="_blank">Join our community</a>
+            </div>
+        </div>
+
+</main>
+<section class="page-content" id="program"></section>
+
+{% endblock %}

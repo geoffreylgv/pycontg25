@@ -184,7 +184,13 @@ def volunteer():
             "volunteer.html",
             year=year,
         )
-    else:  
+    else:
+        if datetime.now() > datetime(2025, 5, 31, 16, 0, 0):
+            return render_template(
+                "call_to_action_close.html",
+                year=year,
+                call_to_action="volunteers",
+            )  
         form_data = request.form
         data = VolunteerInquiry(
             first_name=form_data.get("first_name"),
@@ -230,8 +236,9 @@ def volunteer():
                 retry=False,
                 status="error",
                 message=[
-                    "Oops! Something went wrong.",
-                    "You are already registered, please check your email.",
+                    "You are already registered.",
+                    "We are currently in the process of reviewing applications and will be in touch with selected candidates soon.",
+
                 ],
             )
 
@@ -545,4 +552,4 @@ def internal_server_error(e):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=8001)
+    app.run(debug=True, host="127.0.0.1", port=8000)
