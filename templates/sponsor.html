@@ -66,10 +66,10 @@
             <div class="sponsor-card headline-card">
                 <div class="sponsor-header {{ headline['title']}}-header">
                     <h3 class="h-sponsor"> {{ headline["name"] }}</h3>
-                    <p>{{ headline["amount_cfa"] }} FCFA</p>
+                    <p>{{ headline["amount_cfa"] }} XOF</p>
                     <p><small>(~${{ headline["amount_usd"] }} USD)</small></p>
-                    <div class="availability-tag">EXCLUSIVE - {{ headline["available"] }} of {{ headline["availability"]
-                        }} Available</div>
+                    <!-- <div class="availability-tag">EXCLUSIVE - {{ headline["available"] }} of {{ headline["availability"]
+                        }} Available</div> -->
                 </div>
                 <div class="sponsor-body">
                     <ul class="sponsor-benefits">
@@ -91,12 +91,7 @@
                     <h3 class="h-sponsor">{{ sponsor_tier["name"] }}</h3>
                     <p>{{ sponsor_tier["amount_cfa"] }} XOF</p>
                     <p><small>(~${{ sponsor_tier["amount_usd"] }} USD)</small></p>
-                    {% if sponsor_tier["availability"] > 10 %}
-                    <div class="availability-tag">Unlimited </div>
-                    {% else %}
-                    <div class="availability-tag">{{ sponsor_tier["available"] }} of {{ sponsor_tier["availability"] }}
-                        Available</div>
-                    {% endif %}
+                    
                 </div>
                 <div class="sponsor-body">
                     <ul class="sponsor-benefits">

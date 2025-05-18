@@ -1,7 +1,13 @@
 {% extends "base.html" %}
+{% block title %}
+Become a Sponsor - PyCon Togo 2025
+{% endblock %}
 {% block style %}
 <script src="../static/js/sponsor.js" defer></script>
 <link rel="stylesheet" href="../static/css/sponsor.css">
+
+
+{% endblock %}
 
 
 {% endblock %}
@@ -63,15 +69,15 @@
             <select id="sponsorship-level" name="level" required>
 
 
-                <option value="">Select a sponsorship level</option>
+                <option value="" disabled selected>Select a sponsorship level</option>
                 {% for sponsor_tier in sponsor_tiers %}
                 {% if sponsor_tier['title'] != "inkind" %}
                 {% if sponsor_tier["availability"] > 10 %}
                 <option value="{{sponsor_tier['title']}}">{{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }}
-                    XOF (~${{ sponsor_tier['amount_usd'] }})) - Unlimited</option>
+                    XOF (~${{ sponsor_tier['amount_usd'] }}))</option>
                 {% else %}
                 <option value="{{sponsor_tier['title']}}">{{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }}
-                    XOF (~${{ sponsor_tier['amount_usd'] }})) - {{ sponsor_tier['available'] }} Available</option>
+                    XOF (~${{ sponsor_tier['amount_usd'] }}))</option>
                 {% endif %}
                 {% endif %}
                 {% endfor %}

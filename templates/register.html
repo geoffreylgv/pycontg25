@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block title %}
+Registratin - PyCon Togo 2025
+
+{% endblock %}
 
 {% block content %}
 
@@ -36,7 +40,7 @@
             <div class="form-group">
                 <label for="country" class="form-label required-field">Country / Pays </label>
                 <select id="country" name="country" class="form-control" required>
-                    <option value="">Select your country</option>
+                    <option value="" disabled selected>Select your country</option>
                     <option value="togo">Togo</option>
                     <option value="ghana">Ghana</option>
                     <option value="benin">Benin</option>
@@ -55,7 +59,7 @@
             <div class="form-group" id="tshirt-size" style="display: none;">
                 <label for="country" class="form-label required-field">T-Shirt Size </label>
                 <select id="country" name="tshirtsize" class="form-control">
-                    <option value="">Select your Size</option>
+                    <option value=" disabled selected">Select your Size</option>
                     <option value="s">Small</option>
                     <option value="m">Medium</option>
                     <option value="l">Large</option>
