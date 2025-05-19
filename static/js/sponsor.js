@@ -25,11 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const form = document.querySelector("#sponsor-form");
+    const errorMessage = document.createElement("div");
+    errorMessage.id = "phone-error";
+    errorMessage.style.color = "red";
+    errorMessage.style.marginTop = "5px";
+    input.parentNode.insertBefore(errorMessage, input.nextSibling);
+
     form.addEventListener("submit", function (e) {
         if (iti.isValidNumber()) {
             input.value = iti.getNumber();
+            errorMessage.textContent = ""; // Clear error message
         } else {
-            alert("Please enter a valid phone number.");
+            errorMessage.textContent = "Please enter a valid phone number.";
             e.preventDefault();
         }
     });
