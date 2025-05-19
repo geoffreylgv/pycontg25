@@ -500,7 +500,7 @@ def sponsor():
             retry=False,
             message=[
                 "Thank you, We appreciate your interest in sponsoring our event!",
-                "We have received your inquiry and will review it shortly.",
+                "We have received your inquiry and will contact you shortly.",
             ],
             status="success",
         )
