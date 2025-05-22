@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block style %}
-<script src="../static/js/sponsor.js" defer></script>
 <link rel="stylesheet" href="../static/css/sponsor.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css">
+<script src="../static/js/sponsor.js" defer></script>
+<script src="../static/js/currencyconverter.js" defer></script>
 
 
 
@@ -72,16 +73,18 @@
                 {% for sponsor_tier in sponsor_tiers %}
                 {% if sponsor_tier['title'] != "inkind" %}
                 {% if sponsor_tier["availability"] > 10 %}
-                <option value="{{sponsor_tier['title']}}">{{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }}
-                    XOF (~${{ sponsor_tier['amount_usd'] }})) - Unlimited</option>
+                <option value="{{ sponsor_tier['title'] }}" data-cfa="{{ sponsor_tier['amount_cfa'] }}">
+                    {{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }} CFA / ~... USD)
+                </option>
                 {% else %}
-                <option value="{{sponsor_tier['title']}}">{{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }}
-                    XOF (~${{ sponsor_tier['amount_usd'] }})) - {{ sponsor_tier['available'] }} Available</option>
+                <option value="{{ sponsor_tier['title'] }}" data-cfa="{{ sponsor_tier['amount_cfa'] }}">
+                    {{ sponsor_tier['name'] }} ({{ sponsor_tier['amount_cfa'] }} CFA / ~... USD)
+                </option>
                 {% endif %}
                 {% endif %}
                 {% endfor %}
 
-                <option value="inkind">In-Kind Sponsorship</option>
+                <option value="inkind">Inkind Sponsorship</option>
                 <option value="custom">Custom Sponsorship</option>
             </select>
         </div>
