@@ -9,6 +9,8 @@ Home - PyCon Togo 2025
 
 <script src="../static/js/main.js" defer></script>
 <script src="../static/js/home.js" defer></script>
+<script src="../static/js/currencyconverter.js" defer></script>
+
 
 
 {% endblock %}
@@ -94,7 +96,7 @@ Home - PyCon Togo 2025
                 {% if sponsor_tier['title'] != "headline" and sponsor_tier['title'] != "inkind" %}
                 <div class="tier">
                     <h4 class="tier-name">{{ sponsor_tier['name'] }}</h4>
-                    <div class="tier-price">{{ sponsor_tier['amount_cfa'] }} XOF (~${{ sponsor_tier['amount_usd'] }})</div>
+                    <div class="tier-price"><span data-cfa="{{ sponsor_tier['amount_cfa'] }}">{{ sponsor_tier['amount_cfa'] }} XOF</span> <span class="usd-value" data-cfa="{{ sponsor_tier['amount_cfa'] }}">(~Loading... USD)</small></span></div>
                     <ul class="tier-features">
                         {% for advantage in sponsor_tier['advantages'] %}
                         <li>{{ advantage }}</li>
