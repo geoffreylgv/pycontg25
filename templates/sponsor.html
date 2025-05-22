@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block style %}
 <script src="../static/js/sponsor.js" defer></script>
+<script src="../static/js/currencyconverter.js" defer></script>
 <link rel="stylesheet" href="../static/css/sponsor.css">
 
 
@@ -66,8 +67,8 @@
             <div class="sponsor-card headline-card">
                 <div class="sponsor-header {{ headline['title']}}-header">
                     <h3 class="h-sponsor"> {{ headline["name"] }}</h3>
-                    <p>{{ headline["amount_cfa"] }} XOF</p>
-                    <p><small>(~${{ headline["amount_usd"] }} USD)</small></p>
+                    <p data-cfa="{{ headline['amount_cfa'] }}">{{ headline["amount_cfa"] }} XOF</p>
+                    <p><small class="usd-value" data-cfa="{{ headline['amount_cfa'] }}">(~Loading... USD)</small></p>
                     <!-- <div class="availability-tag">EXCLUSIVE - {{ headline["available"] }} of {{ headline["availability"]
                         }} Available</div> -->
                 </div>
@@ -89,8 +90,8 @@
             <div class="sponsor-card">
                 <div class="sponsor-header {{ sponsor_tier['title'] }}-header">
                     <h3 class="h-sponsor">{{ sponsor_tier["name"] }}</h3>
-                    <p>{{ sponsor_tier["amount_cfa"] }} XOF</p>
-                    <p><small>(~${{ sponsor_tier["amount_usd"] }} USD)</small></p>
+                    <p data-cfa="{{ sponsor_tier['amount_cfa'] }}">{{ sponsor_tier["amount_cfa"] }} XOF</p>
+                    <p><small class="usd-value" data-cfa="{{ sponsor_tier['amount_cfa'] }}">(~Loading... USD)</small></p>
                     
                 </div>
                 <div class="sponsor-body">
@@ -117,8 +118,6 @@
             services. Every contribution helps make our first event successful!</p>
         <a href="{{ url_for('contact')}}" class="btn">Contact Us</a>
     </div>
-
-
 
 </section>
 {% endblock %}
