@@ -345,7 +345,7 @@ def waitlist():
 
 @app.route("/proposal", methods=["GET", "POST"])
 def proposal():
-    cfp_opening_in_days = datetime(2025, 6, 23, 0, 0, 0)
+    cfp_opening_in_days = datetime(2025, 6, 2, 16, 0, 0)
     if request.method == "GET":
         return render_template(
             "speaker.html",
