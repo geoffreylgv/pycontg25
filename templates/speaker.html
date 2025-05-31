@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block style %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" defer></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js" defer></script>
 <script src="../static/js/speacker.js" defer></script>
+<script src="../static/js/sponsor.js" defer></script>
 <link rel="stylesheet" href="../static/css/speacker.css">
 
 
@@ -39,7 +42,7 @@
             </div>
         </div>
 
-        <form id="speaker-form" action="/proposal" method="POST">
+        <form id="unique-form" action="/proposal" method="POST">
             <select name="format" id="talk-format" class="required-field" required>
                 <option value="" disabled selected>Select a format </option>
                 <option value="lightning">Lightning Talk</option>
@@ -71,8 +74,8 @@
                 </div>
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="s-phone">Phone</label>
-                        <input type="tel" id="s-phone" name="phone">
+                        <label for="contact-phone" class="required-field">Phone</label>
+                        <input type="tel" id="contact-phone" name="phone" required>
                     </div>
                 </div>
             </div>
@@ -92,8 +95,9 @@
 
                 <div class="form-group">
                     <label for="s-track" class="required-field">Talk Track</label>
-                    <select id="s-track" name="track" required>
-                        <option value="" disabled selected>Select a track</option>
+                    <select id="s-track" name="track[]" required multiple
+                        data-placeholder="Begin typing a name to filter..." class="chosen-select">
+                        <option value="" disabled>Select one or more tracks</option>
                         <option value="MLOps & DevOps">MLOps & DevOps</option>
                         <option value="Programming & Software Engineering">Programming & Software Engineering</option>
                         <option value="Python Language & Ecosystem">Python Language & Ecosystem</option>
@@ -121,7 +125,6 @@
                         <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
                         <option value="Finance & FinTech">Finance & FinTech</option>
                         <option value="other">Other</option>
-
                     </select>
                 </div>
 

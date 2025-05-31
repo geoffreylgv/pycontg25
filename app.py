@@ -73,14 +73,7 @@ def shop_swag():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
-        print(f"Opening in {opening_in_days} days")
-        return render_template(
-            "register.html",
-            year=year,
-            event_date=event_date_str,
-            registration_open=False,
-        )
-    else:
+        
         if opening_in > timedelta(days=45):
             return render_template(
                 "registration.html",
@@ -89,6 +82,14 @@ def register():
                 registration_open=True,
                 opening_in_days=opening_in_days,
             )
+        
+        return render_template(
+            "register.html",
+            year=year,
+            event_date=event_date_str,
+            registration_open=False,
+        )
+    else:
         form_data = request.form
         data = RegistrationInquiry(
             fullName=form_data.get("fullName"),
@@ -180,17 +181,18 @@ def schedule():
 @app.route("/volunteer", methods=["GET", "POST"])
 def volunteer():
     if request.method == "GET":
-        return render_template(
-            "volunteer.html",
-            year=year,
-        )
-    else:
         if datetime.now() > datetime(2025, 5, 31, 16, 0, 0):
             return render_template(
                 "call_to_action_close.html",
                 year=year,
                 call_to_action="volunteers",
             )  
+        return render_template(
+            "volunteer.html",
+            year=year,
+        )
+    else:
+
         form_data = request.form
         data = VolunteerInquiry(
             first_name=form_data.get("first_name"),
@@ -346,14 +348,9 @@ def waitlist():
 @app.route("/proposal", methods=["GET", "POST"])
 def proposal():
     cfp_opening_in_days = datetime(2025, 6, 2, 16, 0, 0)
+    cfp_closing_in_days = datetime(2025, 6, 30, 16, 0, 0)
     if request.method == "GET":
-        return render_template(
-            "speaker.html",
-            year=year,
-        )
-    else:
         if cfp_opening_in_days > datetime.now():
-
             return render_template(
                 "cfp.html",
                 year=year,
@@ -361,6 +358,19 @@ def proposal():
                 registration_open=True,
                 opening_in_days=cfp_opening_in_days,
             )
+        elif cfp_closing_in_days < datetime.now():
+            return render_template(
+                "call_to_action_close.html",
+                year=year,
+                call_to_action="Proposals",
+            )  
+        
+        return render_template(
+            "speaker.html",
+            year=year,
+        )
+    else:
+     
         form_data = request.form
         data = Proposal(
             format=form_data.get("format"),
@@ -375,7 +385,7 @@ def proposal():
             bio=form_data.get("bio"),
             needs=bool(form_data.get("needs")),
             talk_language=form_data.get("talk_language"),
-            track=form_data.get("track"),
+            track=form_data.getlist("track"),
             technical_needs=form_data.get("technical_needs"),
         )
 
@@ -404,7 +414,7 @@ def proposal():
                 status="error",
                 message=[
                     "Oops! Something went wrong.",
-                    "We have already received a proposal from you. please feel free to reach out to us at pydevstogo@gmail.com.",
+                    "We have already received a proposal from you. please feel free to reach out to us at contact@pytogo.org.",
                 ],
             )
 

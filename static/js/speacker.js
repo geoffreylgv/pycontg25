@@ -19,3 +19,25 @@ document.getElementById('s-technical').addEventListener('change', function () {
     }
 });
 
+$(".chosen-select").chosen({
+    no_results_text: "Oops, nothing found!"
+})
+
+console.log('welcome to speaker js');
+
+document.addEventListener('DOMContentLoaded', function() {
+    const selectElement = document.getElementById('s-track');
+
+    function getSelectedTracks() {
+        // For Chosen, we use .val() via jQuery or just plain value
+        const selectedValues = $('#s-track').val();  // This gives an array of selected values
+        console.log('Selected tracks:', selectedValues);
+        return selectedValues;
+    }
+
+    // Listen to change events
+    $('#s-track').on('change', getSelectedTracks);
+
+    // Optionally, you can call it manually
+    // getSelectedTracks();
+});
