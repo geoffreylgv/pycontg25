@@ -71,8 +71,8 @@ class Proposal(BaseModel):
     talk_language: str = Field(
         ..., title="Talk Language", description="Language of the talk"
     )
-    track: str = Field(
-        ..., title="Track", description="Track of the talk (e.g., Python, Data Science)"
+    track: List[str] = Field(
+        None, title="Track", description="Track of the talk (e.g., Python, Data Science)"
     )
     accepted: bool = Field(
         False, title="Accepted", description="Indicates if the proposal is accepted"

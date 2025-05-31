@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         preferredCountries: ['tg', 'bj', 'gh', 'fr', 'us']
     });
 
-    const form = document.querySelector("#sponsor-form");
+    const form = document.querySelector("#unique-form");
     const errorMessage = document.createElement("div");
     errorMessage.id = "phone-error";
     errorMessage.style.color = "red";

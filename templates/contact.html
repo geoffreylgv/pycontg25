@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 {% block style %}
 <link rel="stylesheet" href="../static/css/sponsor.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
 <script src="../static/js/sponsor.js" defer></script>
 <script src="../static/js/currencyconverter.js" defer></script>
 
@@ -18,7 +15,7 @@
     <p>Fill out the form below to express your interest in sponsoring PyCon Togo 2025. Our team will contact you
         with more details.</p>
 
-    <form id="sponsor-form" action="/sponsor" method="post">
+    <form id="unique-form" action="/sponsor" method="post">
         <div class="form-row">
             <div class="form-col">
                 <div class="form-group">
