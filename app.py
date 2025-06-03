@@ -44,6 +44,8 @@ regigstration_date = datetime(2025, 7, 23, 0, 0, 0)
 opening_in = regigstration_date - datetime.now()
 opening_in_days = opening_in.days
 sponsor_tiers = get_sponsorteirs()
+proposal_opining_date = datetime(2025, 6, 3, 16).strftime("%d %B %Y at %H:%M UTC")
+proposal_closing_date = datetime(2025, 6, 30, 16).strftime("%d %B %Y at %H:%M UTC")
 
 
 @app.route("/favicon.ico")
@@ -58,6 +60,8 @@ def home():
         year=year,
         event_date=event_date_str,
         sponsor_tiers=sponsor_tiers,
+        proposal_opining_date=proposal_opining_date,
+        proposal_closing_date=proposal_closing_date,
     )
 
 
