@@ -78,7 +78,7 @@ def shop_swag():
 def register():
     if request.method == "GET":
         
-        if opening_in > timedelta(days=45):
+        if regigstration_date >  datetime.now():
             return render_template(
                 "registration.html",
                 year=year,
